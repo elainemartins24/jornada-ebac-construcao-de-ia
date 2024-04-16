@@ -70,8 +70,8 @@ setInterval(()=> {
     //horizon: calcula o horizonte
     //currentSpeed: calcula a velocidade atual do dinossauro
     //distanceRan: distância entre o cacto
-    //dimension: as dimensões do dinossauro
-    const {tRex, horizon, currentSpeed, distanceRan, dimension } = game;
+    //dimensions: as dimensões do dinossauro
+    const {tRex, horizon, currentSpeed, distanceRan, dimensions} = game;
     //Calcula a pontuação do dinossauro 
     dino.score = distanceRan - 2000;
 
@@ -99,7 +99,7 @@ setInterval(()=> {
 //Verif. se tem um obstáculo presente 
     if (obstacle) {
         //calcula a distância entre o dinossauro e o cacto
-        const distance = 1 - (utils.getDistance(player, obstacle) / dimension.WIDTH);
+        const distance = 1 - (utils.getDistance(player, obstacle) / dimensions.WIDTH);
     
         //calcula a velocidade relativa do jogador
         const speed = player.speed / 6;
