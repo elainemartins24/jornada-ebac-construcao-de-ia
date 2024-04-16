@@ -5,7 +5,7 @@ import rna from './rna.js'
 import controls from './controls.js'
 
 // número de dinossauros que vai ter por cada geração
-const SAMPLES = 20
+const SAMPLES = 2
 
 //Força a IA sempre abrir uma instância para o jogo
 const game = Runner.instance_;
@@ -132,6 +132,6 @@ if (obstacle) {
 
 /* const s = document.createElement('script');
 s.type = 'module';
-s.src = 'http://localhost:5500/sript.js'
+s.src = 'http://localhost:5500/script.js'
 document.body.appendChild(s);
-*/
+*/ 

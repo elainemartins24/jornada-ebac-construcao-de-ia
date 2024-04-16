@@ -61,13 +61,13 @@ class RNA {
 
         //Cria a camada de neurônios com base nas especificações
         this.levelList = levelList.map((l, i) => {
-            const inputSize = i === 0 ? inputCount : levelList[i - 1]
+            const inputSize = i === 0 ? inputCount : levelList[i - 1];
             return new Array(l).fill().map(() => new Neuron(inputSize));
-        } );
+        });
     }
 
     //Função que calcula a saída (output) da RNA com base nas entradas
-    compute(list = []){
+    compute(list = []) {
         for(let i = 0; i < this.levelList.length; i++ ){
             const tempList = []
 
@@ -80,32 +80,37 @@ class RNA {
         }
         return list;
     }
-}
 
-mutate(rate = 1); {
-    for(const level of this.levelList){
-        for (const neuron of level) neuron.mutate(rate)
+
+    mutate(rate = 0.2) {
+        for(const level of this.levelList){
+            for (const neuron of level) neuron.mutate(rate)
+        }
     }
-}
 
-load(rna); {
-    if (!rna) return;
-    try {
-        this.levelList = rna.map((neuronList) => {
-            return neuronList.map((neuron) => {
-                const n = new Neuron();
-                n.bias = neuron.bias
-                n.weightList = neuron.weightList;
+    load(rna) {
+        if (!rna) return;
+        try {
+            this.levelList = rna.map((neuronList) => {
+                return neuronList.map((neuron) => {
+                    const n = new Neuron();
+                    n.bias = neuron.bias
+                    n.weightList = neuron.weightList;
 
-                return n;
+                    return n;
+                });
             });
-        });
-    } catch (e) {
-        return;
+        } catch (e) {
+        // Vai ser usado para capturar e lidar com erros em JavaScript, permitindo que se tome decisões específicas quando acontece uma exceção durante a execução do código.
+             return;
+        }
     }
-    save(); {
+ 
+    // Função para salvar a configuração atual da RNA
+    save() {
         return this.levelList
     }
 }
 
+// Exporta a classe RNA como o valor padrão do módulo
 export default RNA;
