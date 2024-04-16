@@ -32,7 +32,7 @@ class Neuron {
         let u = 0;
 
         // Calcula a soma ponderada dos sinais de entrada multiplicados pelos pesos
-        for (let i =0; i < this.weightList.lenght; i++){
+        for (let i = 0; i < this.weightList.length; i++){
         u += signalList[i] * this.weightList[i];
      }
 
@@ -42,14 +42,14 @@ class Neuron {
     }
 
     // Função que realiza mutação nos pesos e no viés do neurônio
-    mutate(rate = 1) {
+    mutate(rate = 0.2) {
         this.weightList =  this.weightList.map((w) => {
         // Faz uma mudança nos pesos com base na taxa 'rate'
         return lerp(w, randomRange(-1,1), rate);
     });
 
     // Faz uma mudança no viés (bias) com base na taxa 'rate'
-    this.bias = lerp(this.bias, randomRange(-1,1), range);
+    this.bias = lerp(this.bias, randomRange(-1,1), rate);
     }
 }
 
@@ -60,7 +60,7 @@ class RNA {
         this.score = 0;
 
         //Cria a camada de neurônios com base nas especificações
-        this.levelList = levelList.map((l, i) => {
+        this.levelList = levelList.map((l, i ) => {
             const inputSize = i === 0 ? inputCount : levelList[i - 1];
             return new Array(l).fill().map(() => new Neuron(inputSize));
         });
@@ -84,7 +84,7 @@ class RNA {
 
     mutate(rate = 0.2) {
         for(const level of this.levelList){
-            for (const neuron of level) neuron.mutate(rate)
+            for (const neuron of level) neuron.mutate(rate);
         }
     }
 

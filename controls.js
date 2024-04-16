@@ -3,9 +3,13 @@
 
 export default{
     //Pulo - Define-se a tecla  para a ação de pular
-    jump: new KeyboardEvent('keydow', {key: 'space', keycode: 32}),
+    jump: new KeyboardEvent('keydow', {key: 'Space', keycode: 32}),
     //Agachar
-    dispatch(event){
-        document.dispatchEvent(this[event]);
+    dispatch() {
+        document.dispatchEvent(this.jump);
     }
+
+  //  dispatch(event){
+  //      document.dispatchEvent(this[event]);
 }
+
